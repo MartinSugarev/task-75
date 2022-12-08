@@ -7,17 +7,18 @@ function App() {
 
   const [text, setText] = useState()
 
+  window.onload = () => {
+    setText(localStorage.getItem('key'))
+
+  }
+
 
   return (
     <div className="App">
       <div className="box">
         <div className="field">
           <div className="control">
-            <textarea onLoad={() => {
-              setText(() => {
-                localStorage.getItem('key')
-              })
-            }} onChange={(e) => setText(() => e.target.value)} className="textarea is-large" placeholder="Notes..." value={text}/>
+            <textarea onChange={(e) => setText(() => e.target.value)} className="textarea is-large" placeholder="Notes..." value={text}/>
           </div>
         </div>
         <button onClick={() => localStorage.setItem('key', text)} className="button is-large is-primary is-active">Save</button>
